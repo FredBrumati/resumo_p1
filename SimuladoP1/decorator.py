@@ -9,21 +9,35 @@ raiz_quadrada(x), que retorna a raiz quadrada de x.
 divisao(a, b), que retorna o resultado de a / b.
 Teste chamando as funções com valores positivos (funciona normalmente) e valores negativos (gera erro)."""
 
+# Decorator que valida se os argumentos são positivos
 def valida_positivo(func):
     def wrapper(*args, **kwargs):
+        # Verificação em argumentos posicionais (*args)
         for arg in args:
-            if arg < 0:
-                raise ValueError('Número negativo!')
-        response = func(*args, **kwargs)
-        for key in kwargs:
-            if kwargs[key]< 0:
-                raise ValueError('num vai da')
-        return response
+            if isinstance(arg, (int, float)) and arg < 0:
+                raise ValueError("Número negativo não permitido!")
+
+        # Verificação em argumentos nomeados (**kwargs)
+        for key, value in kwargs.items():
+            if isinstance(value, (int, float)) and value < 0:
+                raise ValueError("Número negativo não permitido!")
+
+        return func(*args, **kwargs)
     return wrapper
 
 @valida_positivo
-def raiz_quadrada(a):
-    print(a ** 0.5)
+def raiz_quadrada(x):
+    return x ** 0.5
 
-raiz_quadrada(3)
-raiz_quadrada(a=5)
+@valida_positivo
+def divisao(a, b):
+    return a / b
+
+# ---- Testes ----
+print("Raiz quadrada de 9:", raiz_quadrada(9))    # válido
+print("Divisão 10/2:", divisao(10, 2))            # válido
+
+# Testes que vão gerar erro
+# raiz_quadrada(-4)         # gera ValueError
+# divisao(-10, 2)           # gera ValueError
+# divisao(a=10, b=-5)       # gera ValueError
