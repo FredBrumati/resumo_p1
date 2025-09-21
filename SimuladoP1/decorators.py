@@ -33,10 +33,6 @@ def raiz_quadrada(x):
 def divisao(a, b):
     return a / b
 
-# ---- Testes ----
-print("Raiz quadrada de 9:", raiz_quadrada(9))    # válido
-print("Divisão 10/2:", divisao(10, 2))            # válido
-
 # Testes que vão gerar erro
 # raiz_quadrada(-4)         # gera ValueError
 # divisao(-10, 2)           # gera ValueError
