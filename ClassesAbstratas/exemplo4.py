@@ -1,14 +1,16 @@
-"""Loja com Estoque
-Classe base Produto:
-info()
-desconto(porcentagem)
-alterar_preco(valor)
-Classe Carrinho:
-adicionar(produto)
-remover(produto)
-total()
-finalizar_compra()
-Já virou quase um mini-sistema, com métodos que mudam estado."""
+"""Exercício 4 – Loja com Carrinho
+Implemente um sistema de compras em Python utilizando orientação a objetos:
+Crie a classe Produto com atributos nome e preco.
+Essa classe deve possuir os métodos:
+info(), que retorna o nome e preço do produto.
+desconto(porcentagem), que aplica desconto sobre o preço.
+alterar_preco(valor), que define um novo preço.
+Crie a classe Carrinho, que mantém uma lista de produtos. Ela deve ter os métodos:
+adicionar(produto) → adiciona produto ao carrinho.
+remover(produto) → remove produto do carrinho.
+total() → retorna o valor total da compra.
+finalizar_compra() → retorna o valor total pago e esvazia o carrinho.
+No programa principal, crie produtos, adicione-os ao carrinho, calcule o total e finalize a compra."""
 
 class Produto:
     def __init__(self, nome, preco):
