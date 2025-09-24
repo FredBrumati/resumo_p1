@@ -1,4 +1,5 @@
 from exemplo1 import *
+import pytest
 
 def test_soma():
     assert soma(3, 4) == 7
