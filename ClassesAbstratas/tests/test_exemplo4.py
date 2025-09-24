@@ -21,6 +21,11 @@ def test_desconto():
     p.desconto(10)
     assert p.preco == 90
 
+def test_alterar_preco():
+    p = Produto("Boné", 50)
+    p.alterar_preco(70)
+    assert p.preco == 70
+
 def test_finalizar_compra():
     p = Produto("Bermuda", 80)
     c = Carrinho()
