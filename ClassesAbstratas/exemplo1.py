@@ -44,12 +44,19 @@ class Revista(Publicacao):
     def tipo(self):
         return "Revista"
 
-# Teste
-livro = Livro("Python Básico", "Maria")
-revista = Revista("Ciência Hoje", "João")
+def main():
+    livro = Livro("Python Básico", "Maria")
+    revista = Revista("Ciência Hoje", "João")
 
-print(livro.info())
-print(livro.emprestar())
-print(livro.info())
-print(livro.devolver())
-print(revista.info())
+    publicacoes = [livro, revista]
+
+    for pub in publicacoes:
+        print(pub.info())
+        print(pub.emprestar())
+        print(pub.info())
+        print(pub.devolver())
+        print(pub.info())
+        print("-" * 40)
+
+if __name__ == "__main__":
+    main()
