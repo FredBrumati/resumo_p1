@@ -1,10 +1,15 @@
-"""Biblioteca
-Classe base Publicacao:
-info() → mostra título e autor
-emprestar() → muda atributo disponivel = False
-devolver() → muda disponivel = True
-Subclasses (Livro, Revista) só mudam a forma como descrevem o tipo.
-Aqui já temos 3 métodos concretos além de tipo()."""
+"""Exercício 1 – Biblioteca
+Implemente um sistema de publicações em Python utilizando classes abstratas:
+Crie uma classe abstrata Publicacao com atributos titulo, autor e disponivel (inicialmente True).
+Essa classe deve possuir os seguintes métodos:
+Um método abstrato tipo(), que será implementado nas subclasses.
+Um método concreto info(), que retorna as informações da publicação.
+Um método emprestar(), que marca a publicação como não disponível.
+Um método devolver(), que marca a publicação como disponível novamente.
+Crie duas subclasses:
+Livro, que retorna "Livro: <titulo> de <autor>".
+Revista, que retorna "Revista: <titulo> de <autor>".
+No programa principal, crie objetos de Livro e Revista, adicione-os a uma lista e teste os métodos criados."""
 
 from abc import ABC, abstractmethod
 
