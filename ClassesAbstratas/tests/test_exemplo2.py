@@ -1,5 +1,5 @@
 import pytest
-from exemplo2 import ContaCorrente
+from exemplo2 import ContaCorrente, ContaPoupanca
 
 def test_depositar():
     conta = ContaCorrente(101, 100)
@@ -22,3 +22,15 @@ def test_transferir():
     assert msg == "Transferido R$50.00 para conta 102."
     assert c1.saldo == 150
     assert c2.saldo == 150
+
+def test_operacao_conta_corrente():
+    conta = ContaCorrente(101, 200)
+    msg = conta.operacao(50)
+    assert msg == "Saque de R$50.00 realizado."
+    assert conta.saldo == 150
+
+def test_operacao_conta_poupanca():
+    conta = ContaPoupanca(201, 1000)
+    msg = conta.operacao()
+    assert msg == "Rendimento aplicado: R$50.00. Novo saldo: R$1050.00"
+    assert conta.saldo == 1050
