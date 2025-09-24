@@ -44,14 +44,33 @@ class Carrinho:
         self.itens.clear()
         return f"Compra finalizada. Total pago: R${valor:.2f}"
 
-# Teste
-p1 = Produto("Camisa", 50)
-p2 = Produto("Calça", 100)
-carrinho = Carrinho()
+def main():
+    # Criando produtos
+    p1 = Produto("Camisa", 50)
+    p2 = Produto("Calça", 100)
+    p3 = Produto("Tênis", 200)
 
-carrinho.adicionar(p1)
-carrinho.adicionar(p2)
-print("Total:", carrinho.total())
-p1.desconto(10)
-print("Total com desconto:", carrinho.total())
-print(carrinho.finalizar_compra())
+    # Criando carrinho
+    carrinho = Carrinho()
+    carrinho.adicionar(p1)
+    carrinho.adicionar(p2)
+    print("Itens no carrinho:")
+    for item in carrinho.itens:
+        print(item.info())
+
+    print(f"Total: R${carrinho.total():.2f}")
+
+    # Aplicando desconto
+    p1.desconto(10)
+    print(f"Total com desconto na Camisa: R${carrinho.total():.2f}")
+
+    # Removendo item
+    carrinho.remover(p2)
+    print(f"Total após remover Calça: R${carrinho.total():.2f}")
+
+    # Finalizando compra
+    print(carrinho.finalizar_compra())
+    print(f"Total após finalizar compra: R${carrinho.total():.2f}")
+
+if __name__ == "__main__":
+    main()
