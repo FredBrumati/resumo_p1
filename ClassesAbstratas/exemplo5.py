@@ -40,6 +40,9 @@ class Carro(Transporte):
         self.combustivel += litros
         return f"Abastecido {litros}L. Total: {self.combustivel:.1f}L"
 
+    def status_combustivel(self):
+        return f"Combustível disponível: {self.combustivel:.1f}L"
+
 class Bicicleta(Transporte):
     def __init__(self, capacidade):
         super().__init__(capacidade)
@@ -49,11 +52,27 @@ class Bicicleta(Transporte):
         self.desgaste += distancia * 0.05
         return f"Bicicleta andou {distancia}km. Nível de desgaste: {self.desgaste:.1f}"
 
-# Teste
-carro = Carro(5, 10)
-bike = Bicicleta(1)
+    def status_desgaste(self):
+        return f"Desgaste atual: {self.desgaste:.1f}"
 
-print(carro.info())
-print(carro.mover(50))
-print(carro.abastecer(5))
-print(bike.mover(20))
+def main():
+    carro = Carro(5, 10)
+    bike = Bicicleta(1)
+
+    transportes = [carro, bike]
+
+    for t in transportes:
+        print(t.info())
+
+    # Movimentos
+    print(carro.mover(50))
+    print(carro.status_combustivel())
+    print(carro.abastecer(5))
+    print(carro.status_combustivel())
+
+    print(bike.mover(20))
+    print(bike.status_desgaste())
+
+if __name__ == "__main__":
+    main()
+
