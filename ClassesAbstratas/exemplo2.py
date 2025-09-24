@@ -1,10 +1,15 @@
-"""Conta Bancária Avançada
-Classe base Conta:
-info()
-depositar(valor)
-sacar(valor)
-transferir(valor, outra_conta)
-Ou seja, a herança continua, mas a classe tem operações extras."""
+"""Exercício 2 – Conta Bancária
+Implemente um sistema de contas bancárias em Python utilizando classes abstratas:
+Crie uma classe abstrata Conta com atributos numero (inteiro) e saldo (float).
+Essa classe deve possuir os seguintes métodos:
+Um método abstrato operacao(valor) que será definido pelas subclasses.
+Um método info(), que retorna as informações da conta.
+Um método depositar(valor), que adiciona saldo.
+Um método sacar(valor), que diminui saldo caso haja dinheiro suficiente.
+Um método transferir(valor, outra_conta), que transfere valores entre contas.
+Crie a subclasse ContaCorrente, que implementa operacao(valor) realizando um saque.
+Crie a subclasse ContaPoupanca, que implementa operacao(valor) aplicando um rendimento de 5% sobre o saldo.
+No programa principal, crie contas e teste as operações."""
 
 from abc import ABC, abstractmethod
 
