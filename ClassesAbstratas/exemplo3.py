@@ -1,14 +1,19 @@
-"""Escola com Notas
-Classe base Pessoa:
-info()
-atividade() (abstrato)
-Subclasse Aluno:
-adicionar_nota(valor)
-media()
-status() → aprovado ou reprovado
-Subclasse Professor:
-atribuir_nota(aluno, valor)
-Aqui temos métodos interagindo entre objetos."""
+"""Exercício 3 – Escola
+Implemente um sistema escolar em Python utilizando classes abstratas:
+Crie uma classe abstrata Pessoa com atributos nome e idade.
+Essa classe deve possuir os seguintes métodos:
+Um método abstrato atividade(), que será definido pelas subclasses.
+Um método concreto info(), que retorna nome e idade.
+Crie as subclasses:
+Aluno, que possui uma lista de notas. Deve implementar os métodos:
+atividade() → retorna "Aluno estudando".
+adicionar_nota(valor) → adiciona nota à lista.
+media() → calcula a média das notas.
+status() → retorna "Aprovado" se a média ≥ 6, senão "Reprovado".
+Professor, que deve implementar:
+atividade() → retorna "Professor ensinando".
+atribuir_nota(aluno, valor) → adiciona uma nota ao aluno.
+No programa principal, crie professores e alunos, adicione notas e verifique o status dos alunos."""
 
 from abc import ABC, abstractmethod
 
