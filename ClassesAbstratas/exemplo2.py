@@ -18,6 +18,10 @@ class Conta(ABC):
         self.numero = numero
         self.saldo = saldo
 
+    @abstractmethod
+    def operacao(self, valor):
+        pass
+
     def info(self):
         return f"Conta {self.numero} | Saldo: R${self.saldo:.2f}"
 
@@ -39,13 +43,28 @@ class Conta(ABC):
         return "Transferência não realizada, saldo insuficiente!"
 
 class ContaCorrente(Conta):
-    pass
+    def operacao(self, valor):
+        return self.sacar(valor)
 
-# Teste
-c1 = ContaCorrente(101, 500)
-c2 = ContaCorrente(102, 200)
+class ContaPoupanca(Conta):
+    def operacao(self, valor=None):
+        # Aplica rendimento de 5% sobre o saldo
+        rendimento = self.saldo * 0.05
+        self.saldo += rendimento
+        return f"Rendimento aplicado: R${rendimento:.2f}. Novo saldo: R${self.saldo:.2f}"
 
-print(c1.info())
-print(c1.transferir(150, c2))
-print(c1.info())
-print(c2.info())
+def main():
+    cc = ContaCorrente(101, 500)
+    cp = ContaPoupanca(201, 1000)
+
+    contas = [cc, cp]
+
+    for c in contas:
+        print(c.info())
+        print(c.depositar(200))
+        print(c.operacao(150) if isinstance(c, ContaCorrente) else c.operacao())
+        print(c.info())
+        print("-" * 40)
+
+if __name__ == "__main__":
+    main()
