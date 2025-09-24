@@ -18,16 +18,20 @@ No programa principal, crie professores e alunos, adicione notas e verifique o s
 from abc import ABC, abstractmethod
 
 class Pessoa(ABC):
-    def __init__(self, nome):
+    def __init__(self, nome, idade):
         self.nome = nome
+        self.idade = idade
 
     @abstractmethod
     def atividade(self):
         pass
 
+    def info(self):
+        return f"Nome: {self.nome} | Idade: {self.idade}"
+
 class Aluno(Pessoa):
-    def __init__(self, nome):
-        super().__init__(nome)
+    def __init__(self, nome, idade):
+        super().__init__(nome, idade)
         self.notas = []
 
     def atividade(self):
@@ -50,13 +54,28 @@ class Professor(Pessoa):
         aluno.adicionar_nota(valor)
         return f"{self.nome} atribuiu nota {valor} para {aluno.nome}."
 
-# Teste
-aluno = Aluno("Pedro")
-prof = Professor("Carla")
+def main():
+    aluno1 = Aluno("Pedro", 16)
+    aluno2 = Aluno("Ana", 17)
+    prof = Professor("Carla", 35)
 
-print(prof.atividade())
-print(aluno.atividade())
-print(prof.atribuir_nota(aluno, 8))
-print(prof.atribuir_nota(aluno, 5))
-print("Média:", aluno.media())
-print("Status:", aluno.status())
+    pessoas = [aluno1, aluno2, prof]
+
+    # Exibindo atividades
+    for p in pessoas:
+        print(p.info())
+        print(p.atividade())
+
+    # Professor atribui notas
+    print(prof.atribuir_nota(aluno1, 8))
+    print(prof.atribuir_nota(aluno1, 5))
+    print(prof.atribuir_nota(aluno2, 10))
+    print(prof.atribuir_nota(aluno2, 6))
+
+    # Mostrando médias e status
+    for a in [aluno1, aluno2]:
+        print(f"{a.nome} - Média: {a.media():.2f} | Status: {a.status()}")
+        print("-" * 30)
+
+if __name__ == "__main__":
+    main()
